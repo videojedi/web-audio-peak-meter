@@ -82,6 +82,12 @@ function createMeter(domElement, meterNode, options = {}) {
   meterElement.addEventListener('click', () => {
     meterData.heldPeaks.fill(0.0);
   }, false);
+  
+  //quick and dirty way of resetting peak values... seems to have an issue if using true-peak
+  var intervalID = setInterval(function(){
+    meterData.heldPeaks.fill(0.0);
+  },1000)
+  
   markup.paintMeter(config, meterData);
 }
 
